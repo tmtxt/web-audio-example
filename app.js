@@ -1,7 +1,12 @@
-var buffer;
 var navigator = window.navigator;
+
+// audio
 var mediaStream;
 var rec;
+
+// video
+var videoMediaStream;
+var video;
 
 navigator.getUserMedia = (
   navigator.getUserMedia ||
@@ -34,4 +39,25 @@ function stop() {
     rec.clear();
     Recorder.forceDownload(e, "test.wav");
   });
+}
+
+function recordVideo() {
+  navigator.getUserMedia({video: true, audio: true}, function(localMediaStream){
+    videoMediaStream = localMediaStream;
+    var Context = window.AudioContext || window.webkitAudioContext;
+    var context = new Context();
+    var mediaStreamSource = context.createMediaStreamSource(localMediaStream);
+
+    video = document.querySelector('video');
+    video.src = URL.createObjectURL(localMediaStream);
+    video.play();
+  }, function(err){
+    console.log('Not supported');
+  });
+}
+
+
+function stopVideo() {
+  video.pause();
+  videoMediaStream.stop();
 }
