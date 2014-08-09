@@ -15,5 +15,5 @@ $ http-server
 npm install -g http-server
 ```
 
-- Detail explanation here [Record and Export Audio, Video files in browser using Web Audio API with Recorder.js](http://truongtx.me/2014/08/09/record-and-export-audio-video-files-in-browser-using-web-audio-api/)
+- Detail explanation and live demo here [Record and Export Audio, Video files in browser using Web Audio API with Recorder.js](http://truongtx.me/2014/08/09/record-and-export-audio-video-files-in-browser-using-web-audio-api/)
 
