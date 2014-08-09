@@ -1,4 +1,6 @@
 var navigator = window.navigator;
+var Context = window.AudioContext || window.webkitAudioContext;
+var context = new Context();
 
 // audio
 var mediaStream;
@@ -18,8 +20,6 @@ navigator.getUserMedia = (
 function record() {
   navigator.getUserMedia({audio: true}, function(localMediaStream){
     mediaStream = localMediaStream;
-    var Context = window.AudioContext || window.webkitAudioContext;
-    var context = new Context();
     var mediaStreamSource = context.createMediaStreamSource(localMediaStream);
     rec = new Recorder(mediaStreamSource, {
       workerPath: '/bower_components/Recorderjs/recorderWorker.js'
